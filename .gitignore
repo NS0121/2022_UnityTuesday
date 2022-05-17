@@ -58,3 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Unity_Tuesday/Library/*
+Unity_Tuesday/UserSettings/*
+Unity_Tuesday/.vsconfig
