@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class RouletteScript : MonoBehaviour
 {
+    //回転スピード
     float rotSpeed = 0;
+    //マウス座標
     Vector2 startPos;
-    [SerializeField, HeaderAttribute("減速")]
-    private float decelerateSpeed = 0.9f;
+    //減速率
+    [SerializeField, HeaderAttribute("減速率")]
+    private float decelerateSpeed = 0.99f;
+    //マネージャへ渡す値
+    [HideInInspector]
     public float Rot;
 
     void Start()
@@ -19,6 +24,7 @@ public class RouletteScript : MonoBehaviour
     {
         while(true)
         {
+            //マウス入力
             if (Input.GetMouseButtonDown(0))
             {
                 this.startPos = Input.mousePosition;
@@ -30,10 +36,13 @@ public class RouletteScript : MonoBehaviour
 
                 this.rotSpeed = swipeLength;
             }
+            //回転
             transform.Rotate(0, 0, this.rotSpeed);
 
+            //減速
             this.rotSpeed *= decelerateSpeed;
 
+            //マネージャーに渡すための値を生成
             Rot = this.transform.localEulerAngles.z;
             yield return null;
         }

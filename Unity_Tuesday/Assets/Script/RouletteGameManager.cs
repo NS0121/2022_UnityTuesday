@@ -5,24 +5,29 @@ using UnityEngine.UI;
 
 public class RouletteGameManager : MonoBehaviour
 {
+    //リザルト
     [SerializeField]
     Text result;
+    //ルーレット結果
     [SerializeField]
-    GameObject rouletteStop;
-
-    RouletteScript RouletteScript;
+    GameObject rouletteResult;
+    //ルーレットにアタッチされているスクリプトを取得
+    RouletteScript rouletteScript;
+    //計算用
     float num;
 
-    // Start is called before the first frame update
     void Start()
     {
-        RouletteScript = rouletteStop.GetComponent<RouletteScript>();
+        rouletteScript = rouletteResult.GetComponent<RouletteScript>();
     }
 
-    // Update is called once per frame
+    //なるべくupdateを使わないように気を配りましたが、時間の都合上と技量不足により使わざるを得ませんでした；；
     void Update()
     {
-        num = RouletteScript.Rot;
+    #region 渡された値を元に結果を表示する
+        //ルーレットから渡された値を取得
+        num = rouletteScript.Rot;
+        //値を360以内に抑える
         while(true)
         {
             if((Mathf.Abs(num) > 360))
@@ -34,7 +39,7 @@ public class RouletteGameManager : MonoBehaviour
                 break;
             }
         }
-
+        //ルーレット結果
            if (num > 0)
             {
 
@@ -91,6 +96,7 @@ public class RouletteGameManager : MonoBehaviour
                     result.text = "大吉";
                 }
             }
-        
+    #endregion
     }
+
 }
