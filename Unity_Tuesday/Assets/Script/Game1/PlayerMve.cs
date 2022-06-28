@@ -8,7 +8,7 @@ public class PlayerMve : MonoBehaviour
     float moveX = 0f;
     float moveZ = 0f;
     bool isStop = false;
-    Vector3 teleportPoint = new Vector3(0, 3, 0);
+    Vector3 teleportPoint = new Vector3(0, 0, 0);
     // Start is called before the first frame update
     void Start()
     {

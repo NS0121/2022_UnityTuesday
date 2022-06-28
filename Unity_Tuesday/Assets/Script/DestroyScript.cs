@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class DestroyScript : MonoBehaviour
 {
-	public bool isDest = false;
+	public bool isDest;
 
 	void Start()
 	{
+		isDest = false;
 	}
     void OnCollisionEnter(Collision collision)
 	{
